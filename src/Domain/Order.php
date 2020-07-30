@@ -76,11 +76,11 @@ class Order extends TransactionBase
 
         return new self(
             $data['orderReference'],
-            new DateTime('@' . $data['createdDate']),
+            empty($data['createdDate']) ? null : new DateTime('@' . $data['createdDate']),
             $data['amount'],
             $data['currency'],
             $data['transactionStatus'],
-            new DateTime('@' . $data['processingDate']),
+            empty($data['processingDate']) ? null : new DateTime('@' . $data['processingDate']),
             $data['reasonCode'],
             $data['reason'],
             isset($data['cardPan']) ? $data['cardPan'] : null,
